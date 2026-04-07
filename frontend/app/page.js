@@ -170,18 +170,20 @@ export default function Home() {
         title="From farm to future-ready products"
         description="Our integrated value chain ensures quality, sustainability, and farmer prosperity at every stage."
       >
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-2">
           {valueChainSteps.map((step, idx) => (
-            <div key={step.title} className="relative">
-              <div className="premium-card p-6 text-center h-full hover:shadow-xl transition-all">
-                <span className="text-4xl block mb-3">{step.icon}</span>
-                <p className="text-xs font-bold uppercase tracking-widest text-[var(--accent)]">Step {idx + 1}</p>
-                <h3 className="mt-2 text-lg font-bold text-[var(--primary)]">{step.title}</h3>
-                <p className="mt-3 text-sm text-slate-600">{step.detail}</p>
+            <div key={step.title} className="flex items-center">
+              <div className="flex-1">
+                <div className="premium-card p-6 text-center h-full hover:shadow-xl transition-all">
+                  <span className="text-4xl block mb-3">{step.icon}</span>
+                  <p className="text-xs font-bold uppercase tracking-widest text-[var(--accent)]">Step {idx + 1}</p>
+                  <h3 className="mt-2 text-lg font-bold text-[var(--primary)]">{step.title}</h3>
+                  <p className="mt-3 text-sm text-slate-600">{step.detail}</p>
+                </div>
               </div>
               {idx < valueChainSteps.length - 1 && (
-                <div className="absolute -right-3 top-1/2 z-10 hidden lg:block">
-                  <div className="text-[var(--accent)] text-2xl">→</div>
+                <div className="hidden lg:flex items-center justify-center w-6 flex-shrink-0">
+                  <div className="text-[var(--accent)] text-2xl font-bold">→</div>
                 </div>
               )}
             </div>
