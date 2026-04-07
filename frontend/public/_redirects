@@ -1,0 +1,7 @@
+# Netlify redirects
+/index                    /                    301
+/home                     /                    301
+/index.html               /                    301
+
+# Catch-all for 404s - serve index.html
+/*                        /index.html          200

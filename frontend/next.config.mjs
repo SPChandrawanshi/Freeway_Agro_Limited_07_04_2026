@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export', // Enable static export for Netlify
   images: {
     remotePatterns: [
       {
@@ -8,6 +9,7 @@ const nextConfig = {
       },
     ],
     qualities: [75, 85],
+    unoptimized: true, // Required for static export
   },
 };
 
