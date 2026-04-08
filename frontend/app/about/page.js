@@ -203,6 +203,12 @@ export default function AboutPage() {
             Whether you&apos;re a farmer, distributor, or corporate partner, we&apos;re excited to collaborate and create shared value.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/book"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--secondary)] px-8 py-4 font-bold text-[var(--primary)] hover:bg-white transition-all hover:shadow-lg"
+            >
+              🚜 Book a Tractor
+            </Link>
             <Link href="/contact" className="btn-outline">
               Connect With Us
             </Link>

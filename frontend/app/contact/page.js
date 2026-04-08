@@ -7,6 +7,13 @@ import SectionWrapper from "../components/SectionWrapper";
 
 const contactMethods = [
   {
+    icon: "�",
+    title: "WhatsApp",
+    value: "+234 916 409 1702",
+    description: "Quick chat support",
+    link: "https://wa.me/+2349164091702",
+  },
+  {
     icon: "📧",
     title: "Email",
     value: "info@freewayagro.com",
@@ -23,12 +30,6 @@ const contactMethods = [
     title: "Office",
     value: "Industrial Layout, Ogun State, Nigeria",
     description: "Visit us",
-  },
-  {
-    icon: "🕒",
-    title: "Hours",
-    value: "Monday - Friday: 9AM - 5PM WAT",
-    description: "Business hours",
   },
 ];
 
@@ -60,9 +61,33 @@ export default function ContactPage() {
         title="Get in Touch"
         subtitle="Let's build a sustainable future together. Reach out for partnerships, product inquiries, and strategic collaboration."
         image="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80"
-        primaryCTA={{ label: "Contact Form", href: "#form" }}
-        secondaryCTA={{ label: "Learn More", href: "/about" }}
+        primaryCTA={{ label: "Chat on WhatsApp", href: "https://wa.me/+2349164091702" }}
+        secondaryCTA={{ label: "Contact Form", href: "#form" }}
       />
+
+      {/* Prominent WhatsApp CTA */}
+      <SectionWrapper className="bg-gradient-to-r from-[#25D366]/10 to-[var(--secondary)]/10 border-b-2 border-[#25D366]/30">
+        <div className="text-center max-w-2xl mx-auto">
+          <div className="text-5xl mb-4">💬</div>
+          <h2 className="text-3xl font-bold text-[var(--primary)] mb-3">
+            Need Quick Support?
+          </h2>
+          <p className="text-lg text-slate-600 mb-6">
+            Chat with us directly on WhatsApp for instant assistance with tractor bookings, product inquiries, or any questions.
+          </p>
+          <Link
+            href="https://wa.me/+2349164091702"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#1fad50] transition-colors shadow-lg hover:shadow-xl"
+          >
+            💬 WhatsApp: +234 916 409 1702
+          </Link>
+          <p className="text-sm text-slate-500 mt-4">
+            Available Monday - Friday, 9AM - 5PM WAT
+          </p>
+        </div>
+      </SectionWrapper>
 
       <SectionWrapper
         eyebrow="How to Reach Us"
@@ -71,10 +96,21 @@ export default function ContactPage() {
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {contactMethods.map((method) => (
-            <div key={method.title} className="premium-card p-6 text-center h-full">
+            <div key={method.title} className="premium-card p-6 text-center h-full hover:shadow-lg transition-shadow">
               <span className="text-5xl block mb-3">{method.icon}</span>
               <h3 className="font-bold text-[var(--primary)] mb-2">{method.title}</h3>
-              <p className="font-semibold text-[var(--secondary)] text-sm mb-2">{method.value}</p>
+              {method.link ? (
+                <Link
+                  href={method.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block font-semibold text-[var(--secondary)] text-sm mb-2 hover:underline"
+                >
+                  {method.value}
+                </Link>
+              ) : (
+                <p className="font-semibold text-[var(--secondary)] text-sm mb-2">{method.value}</p>
+              )}
               <p className="text-xs text-slate-600">{method.description}</p>
             </div>
           ))}

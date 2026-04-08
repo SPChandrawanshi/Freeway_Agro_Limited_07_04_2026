@@ -75,7 +75,7 @@ export default function Home() {
         tagline="Freeway Agro Limited"
         title="Sustainable Cassava Processing for a Better Future"
         subtitle="We transform cassava into high-value products through responsible processing, clean energy integration, and farmer-first partnerships."
-        image="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=1800&q=80"
+        image="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1800&q=80"
         primaryCTA={{ label: "Explore Products", href: "/products" }}
         secondaryCTA={{ label: "Learn More", href: "/about" }}
       />

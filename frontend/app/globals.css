@@ -63,11 +63,14 @@
 }
 
 :root {
-  --background: #f8f9fa;
+  --background: #ffffff;
   --foreground: #1a1a1a;
-  --primary: #0f3d3e;
-  --secondary: #f4a261;
-  --accent: #2a9d8f;
+  --primary: #1a1a1a;
+  --secondary: #2d8659;
+  --accent: #2d8659;
+  --dark-bg: #2d2d2d;
+  --green: #7cb342;
+  --light-green: #9ccc65;
   --card-shadow:
     rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

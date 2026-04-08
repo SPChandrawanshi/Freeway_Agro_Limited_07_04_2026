@@ -25,7 +25,7 @@ export default function Hero({
       </div>
       
       {/* Enhanced overlay with gradient */}
-      <div className={`absolute inset-0 -z-10 bg-gradient-to-r from-[var(--primary)]/80 via-[var(--primary)]/75 to-[var(--primary)]/60`} />
+      <div className={`absolute inset-0 -z-10 bg-gradient-to-r from-[#1a1a1a]/85 via-[#1a1a1a]/80 to-[#1a1a1a]/70`} />
 
       {showLogo && (
         <Link
@@ -62,15 +62,17 @@ export default function Hero({
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-scale-in animation-delay-300">
             <Link
               href={primaryCTA.href}
-              className="btn-primary bg-[var(--secondary)] text-[var(--primary)] hover:bg-white hover:text-[var(--primary)] text-lg font-bold px-8 py-4"
+              className="group inline-flex items-center gap-2 rounded-lg bg-[var(--secondary)] px-8 py-4 text-base font-bold tracking-[0.01em] text-[var(--primary)] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               {primaryCTA.label}
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
             <Link
               href={secondaryCTA.href}
-              className="btn-outline text-lg font-bold px-8 py-4"
+              className="group inline-flex items-center gap-2 rounded-lg border-2 border-white/80 px-8 py-4 text-base font-bold tracking-[0.01em] text-white hover:border-white hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
             >
               {secondaryCTA.label}
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </div>
         </div>

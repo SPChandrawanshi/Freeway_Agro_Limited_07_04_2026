@@ -32,36 +32,31 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
       isScrolled 
-        ? "bg-white/70 backdrop-blur" 
-        : "bg-transparent"
+        ? "bg-[#1a1a1a]/95 backdrop-blur" 
+        : "bg-[#1a1a1a]"
     }`}>
-      <div className="w-full px-4 pt-3 sm:px-6 lg:px-12">
-        <nav className="mx-auto grid h-[72px] max-w-6xl grid-cols-[auto_1fr_auto] items-center rounded-2xl border border-slate-200 bg-white px-4 shadow-sm lg:h-[88px] lg:px-6">
-          {/* Left: Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="flex items-center rounded-xl bg-white px-2 py-1 shadow-sm ring-1 ring-slate-100">
-              <div className="h-14 sm:h-16 lg:h-[72px]">
-                <Image
-                  src="/logo.png"
-                  alt="Freeway Agro Limited"
-                  width={568}
-                  height={572}
-                  priority
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-            </div>
-          </Link>
+      <nav className="w-full h-[72px] lg:h-[80px] flex items-center justify-between px-4 sm:px-6 lg:px-12 bg-[#1a1a1a]">
+        {/* Left: Logo */}
+        <Link href="/" className="flex items-center flex-shrink-0 bg-transparent">
+          <Image
+            src="/logo.png"
+            alt="Freeway Agro Limited"
+            width={50}
+            height={50}
+            priority
+            className="h-12 w-auto object-contain bg-transparent"
+          />
+        </Link>
 
           {/* Center: Desktop Menu */}
-          <ul className="hidden lg:flex items-center justify-center gap-7 xl:gap-9">
+          <ul className="hidden lg:flex items-center justify-center gap-8 xl:gap-10 px-8">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm font-medium tracking-[0.01em] text-slate-700 transition hover:text-[var(--primary)]"
+                  className="text-sm font-medium text-white transition hover:text-[#7cb342]"
                 >
                   {link.label}
                 </Link>
@@ -70,17 +65,24 @@ export default function Navbar() {
           </ul>
 
           {/* Right: CTA + Mobile Toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 lg:gap-3">
+            <Link
+              href="/book"
+              className="hidden md:inline-flex rounded-md bg-[#2d8659] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#1b5a3f]"
+            >
+              🚜 Book Tractor
+            </Link>
+
             <Link
               href="/contact"
-              className="hidden lg:inline-flex rounded-md bg-[var(--primary)] px-5 py-2.5 text-sm font-medium tracking-[0.01em] text-white transition hover:opacity-90"
+              className="hidden lg:inline-flex rounded-md bg-[#2d8659] px-5 py-2 text-sm font-medium text-white transition hover:bg-[#1b5a3f]"
             >
-              Contact Us
+              Contact
             </Link>
 
             <button
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[var(--primary)] transition-colors hover:bg-slate-100 lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-[#2d8659]/20 lg:hidden"
               onClick={() => setIsOpen((prev) => !prev)}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
@@ -88,36 +90,44 @@ export default function Navbar() {
               <span className="text-2xl font-bold">{isOpen ? "✕" : "☰"}</span>
             </button>
           </div>
-        </nav>
+      </nav>
 
-        {/* Mobile Navigation */}
-        {mounted && isOpen && (
-          <div className="mx-auto mt-2 max-w-6xl rounded-2xl border border-slate-200 bg-white px-3 pb-4 pt-3 shadow-sm lg:hidden">
-            <ul className="space-y-2">
-              {navLinks.map((link) => (
-                <li key={link.href} className="text-center">
-                  <Link
-                    href={link.href}
-                    className="inline-block rounded-lg px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-[var(--primary)]"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-3 text-right">
+      {/* Mobile Navigation */}
+      {mounted && isOpen && (
+        <div className="w-full bg-[#2d2d2d] px-4 sm:px-6 lg:px-12 pb-4 pt-3 shadow-sm lg:hidden">
+          <ul className="space-y-2">
+            {navLinks.map((link) => (
+              <li key={link.href} className="text-center">
+                <Link
+                  href={link.href}
+                  className="inline-block rounded-lg px-4 py-3 font-semibold text-white transition hover:bg-[#2d8659] hover:text-white"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-4 space-y-2">
+            <div className="flex flex-col gap-2">
               <Link
-                href="/contact"
-                className="inline-block rounded-md bg-[var(--primary)] px-6 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                href="/book"
+                className="inline-block rounded-md bg-[#2d8659] px-6 py-2.5 text-sm font-bold text-white transition hover:bg-[#1b5a3f] text-center"
                 onClick={() => setIsOpen(false)}
               >
-                Contact Us
+                🚜 Book Tractor
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-block rounded-md bg-[#2d8659] px-6 py-2 text-sm font-semibold text-white transition hover:bg-[#1b5a3f] text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
               </Link>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 }
