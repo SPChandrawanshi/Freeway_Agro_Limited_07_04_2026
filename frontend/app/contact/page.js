@@ -7,7 +7,7 @@ import SectionWrapper from "../components/SectionWrapper";
 
 const contactMethods = [
   {
-    icon: "�",
+    icon: "💬",
     title: "WhatsApp",
     value: "+234 916 409 1702",
     description: "Quick chat support",
@@ -42,12 +42,13 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! We'll be in touch soon.");
+    setSubmitted(true);
     setFormData({ name: "", email: "", phone: "", company: "", subject: "", message: "" });
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   const handleChange = (e) => {
@@ -125,6 +126,15 @@ export default function ContactPage() {
         description="Fill out the form below and we'll get back to you promptly."
       >
         <div className="w-full">
+          {submitted && (
+            <div className="mb-6 rounded-lg bg-green-50 border border-green-300 px-5 py-4 flex items-center gap-3">
+              <span className="text-2xl">✅</span>
+              <div>
+                <p className="font-semibold text-green-800">Message sent successfully!</p>
+                <p className="text-sm text-green-700">Thank you for reaching out. We&apos;ll be in touch soon.</p>
+              </div>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="premium-card p-6 md:p-8">
             <div className="grid gap-6">
               <div className="grid gap-6 md:grid-cols-2">

@@ -5,17 +5,13 @@ import { useEffect, useState } from "react";
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    
-    // Show button after a short delay
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  if (!mounted || !isVisible) return null;
+  if (!isVisible) return null;
 
   const whatsappNumber = "+2349164091702";
   const message = "Hi! I'm interested in booking a tractor or learning more about Freeway Agro services.";

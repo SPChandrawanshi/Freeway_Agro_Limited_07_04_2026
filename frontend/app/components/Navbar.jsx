@@ -17,11 +17,6 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,7 +88,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Navigation */}
-      {mounted && isOpen && (
+      {isOpen && (
         <div className="w-full bg-[#2d2d2d] px-4 sm:px-6 lg:px-12 pb-4 pt-3 shadow-sm lg:hidden">
           <ul className="space-y-2">
             {navLinks.map((link) => (

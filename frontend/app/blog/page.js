@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Hero from "../components/Hero";
 import SectionWrapper from "../components/SectionWrapper";
@@ -48,6 +51,18 @@ const posts = [
 ];
 
 export default function BlogPage() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail("");
+      setTimeout(() => setSubscribed(false), 5000);
+    }
+  };
+
   return (
     <div>
       <Hero
@@ -94,17 +109,28 @@ export default function BlogPage() {
           <p className="text-lg text-white/90 mb-8">
             Subscribe to our newsletter for regular updates on agriculture and sustainability.
           </p>
-          <form className="flex flex-col sm:flex-row gap-3 mb-4">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 rounded-full px-6 py-3 text-[var(--primary)] placeholder-slate-400 focus:outline-none"
-            />
-            <button type="submit" className="btn-outline">
-              Subscribe
-            </button>
-          </form>
-          <p className="text-sm text-white/80">No spam, just valuable insights.</p>
+          {subscribed ? (
+            <div className="flex flex-col items-center gap-3 py-4">
+              <span className="text-4xl">🎉</span>
+              <p className="text-lg font-semibold text-white">You&apos;re subscribed!</p>
+              <p className="text-white/80 text-sm">Thank you for joining our newsletter.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 mb-4">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                required
+                className="flex-1 rounded-full px-6 py-3 text-[var(--primary)] placeholder-slate-400 focus:outline-none"
+              />
+              <button type="submit" className="btn-outline">
+                Subscribe
+              </button>
+            </form>
+          )}
+          {!subscribed && <p className="text-sm text-white/80">No spam, just valuable insights.</p>}
         </div>
       </SectionWrapper>
     </div>

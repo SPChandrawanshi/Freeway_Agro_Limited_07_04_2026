@@ -90,9 +90,13 @@ export default function FaqPage() {
           <div className="space-y-4">
             {section.questions.map((item) => (
               <details key={item.q} className="premium-card p-6 cursor-pointer group">
-                <summary className="flex items-start justify-between text-lg font-semibold text-[var(--primary)] cursor-pointer">
+                <summary className="flex items-start justify-between text-lg font-semibold text-[var(--primary)] cursor-pointer list-none">
                   <span className="text-left pr-4">{item.q}</span>
-                  <span className="text-2xl flex-shrink-0 group-open:rotate-180 transition-transform">+</span>
+                  <span className="flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-[var(--accent)] transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
                 </summary>
                 <p className="mt-4 text-slate-600 leading-relaxed">{item.a}</p>
               </details>

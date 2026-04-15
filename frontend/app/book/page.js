@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState } from 'react';
+import Hero from '../components/Hero';
 import SectionWrapper from '../components/SectionWrapper';
 
 export default function BookTractor() {
@@ -41,15 +41,15 @@ export default function BookTractor() {
 
   return (
     <main className="bg-white">
-      {/* Header */}
-      <div className="bg-[#1a1a1a] text-white py-16">
-        <div className="container-wide">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Book a Tractor</h1>
-          <p className="text-gray-300 text-lg">Quality equipment for your agricultural needs</p>
-        </div>
-      </div>
+      <Hero
+        title="Book a Tractor"
+        subtitle="Quality agricultural equipment deployed fast to your location. Fill in your details and we'll confirm within 24 hours."
+        image="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1800&h=900&fit=crop"
+        primaryCTA={{ label: "💬 Chat on WhatsApp", href: "https://wa.me/+2349164091702" }}
+        secondaryCTA={{ label: "Booking Form", href: "#booking-form" }}
+      />
 
-      <SectionWrapper>
+      <SectionWrapper id="booking-form">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left - Image */}
           <div className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
@@ -70,7 +70,7 @@ export default function BookTractor() {
 
             {submitted && (
               <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-                ✓ Your booking request has been sent to WhatsApp. We'll contact you soon!
+                ✓ Your booking request has been sent to WhatsApp. We&apos;ll contact you soon!
               </div>
             )}
 
@@ -188,50 +188,46 @@ export default function BookTractor() {
       </SectionWrapper>
 
       {/* Equipment Features */}
-      <section className="bg-gray-50 py-16">
-        <SectionWrapper>
-          <h2 className="text-3xl font-bold text-[#1a1a1a] mb-4 text-center">Why Choose Our Equipment?</h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            We provide well-maintained, reliable tractors for all your agricultural needs.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: '✓ Quality Equipment', desc: 'Well-maintained tractors in excellent condition' },
-              { title: '✓ Affordable Rates', desc: 'Competitive pricing for all farm sizes' },
-              { title: '✓ Fast Delivery', desc: 'Quick deployment to your location' },
-              { title: '✓ 24/7 Support', desc: 'Customer support available round the clock' },
-              { title: '✓ Trained Operators', desc: 'Professional operators can be provided' },
-              { title: '✓ Flexible Terms', desc: 'Book for hours, days, weeks, or months' },
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-lg font-bold text-[#2d8659] mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </SectionWrapper>
-      </section>
+      <SectionWrapper
+        className="bg-slate-50"
+        eyebrow="Why Choose Us"
+        title="Why Choose Our Equipment?"
+        description="We provide well-maintained, reliable tractors for all your agricultural needs."
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { title: '✓ Quality Equipment', desc: 'Well-maintained tractors in excellent condition' },
+            { title: '✓ Affordable Rates', desc: 'Competitive pricing for all farm sizes' },
+            { title: '✓ Fast Delivery', desc: 'Quick deployment to your location' },
+            { title: '✓ 24/7 Support', desc: 'Customer support available round the clock' },
+            { title: '✓ Trained Operators', desc: 'Professional operators can be provided' },
+            { title: '✓ Flexible Terms', desc: 'Book for hours, days, weeks, or months' },
+          ].map((item, i) => (
+            <div key={i} className="premium-card p-6">
+              <h3 className="text-lg font-bold text-[var(--secondary)] mb-2">{item.title}</h3>
+              <p className="text-slate-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </SectionWrapper>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-[#1a1a1a] to-[#2d8659] text-white py-12">
-        <SectionWrapper>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Book?</h2>
-            <p className="mb-6 text-lg">
-              Contact us via WhatsApp for instant response
-            </p>
-            <a
-              href="https://wa.me/+2349164091702"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-[#25D366] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#1fad50] transition-all"
-            >
-              💬 Chat on WhatsApp
-            </a>
-          </div>
-        </SectionWrapper>
-      </section>
+      <SectionWrapper className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white" tone="dark">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Book?</h2>
+          <p className="mb-6 text-lg text-white/90">
+            Contact us via WhatsApp for instant response
+          </p>
+          <a
+            href="https://wa.me/+2349164091702"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#25D366] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#1fad50] transition-all"
+          >
+            💬 Chat on WhatsApp
+          </a>
+        </div>
+      </SectionWrapper>
     </main>
   );
 }
