@@ -5,6 +5,8 @@ import Link from "next/link";
 import Hero from "../components/Hero";
 import SectionWrapper from "../components/SectionWrapper";
 
+const SUCCESS_MESSAGE_DURATION = 5000;
+
 const contactMethods = [
   {
     icon: "💬",
@@ -48,7 +50,7 @@ export default function ContactPage() {
     e.preventDefault();
     setSubmitted(true);
     setFormData({ name: "", email: "", phone: "", company: "", subject: "", message: "" });
-    setTimeout(() => setSubmitted(false), 5000);
+    setTimeout(() => setSubmitted(false), SUCCESS_MESSAGE_DURATION);
   };
 
   const handleChange = (e) => {

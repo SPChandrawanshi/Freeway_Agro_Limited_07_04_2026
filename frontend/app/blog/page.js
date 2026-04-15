@@ -5,6 +5,8 @@ import Link from "next/link";
 import Hero from "../components/Hero";
 import SectionWrapper from "../components/SectionWrapper";
 
+const SUCCESS_MESSAGE_DURATION = 5000;
+
 const posts = [
   {
     id: 1,
@@ -59,7 +61,7 @@ export default function BlogPage() {
     if (email) {
       setSubscribed(true);
       setEmail("");
-      setTimeout(() => setSubscribed(false), 5000);
+      setTimeout(() => setSubscribed(false), SUCCESS_MESSAGE_DURATION);
     }
   };
 
